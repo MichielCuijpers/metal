@@ -28,6 +28,7 @@ import static io.parsingdata.metal.util.EncodingFactory.enc;
 import org.junit.Test;
 
 import io.parsingdata.metal.data.ImmutableList;
+import io.parsingdata.metal.data.Location;
 import io.parsingdata.metal.data.ParseValue;
 
 public class ImmutableListTest {
@@ -145,7 +146,7 @@ public class ImmutableListTest {
     }
 
     private ParseValue val(final char c) {
-        return new ParseValue(Character.toString(c), def(Character.toString(c), 0L), 0L, new byte[] { (byte) c }, enc());
+        return new ParseValue(Character.toString(c), def(Character.toString(c), 0L), ImmutableList.create(new Location(0, 1)), new byte[] { (byte) c }, enc());
     }
 
 }
