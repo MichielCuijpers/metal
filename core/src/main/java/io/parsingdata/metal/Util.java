@@ -16,6 +16,8 @@
 
 package io.parsingdata.metal;
 
+import io.parsingdata.metal.data.ImmutableList;
+import io.parsingdata.metal.data.Location;
 import io.parsingdata.metal.token.Token;
 
 public final class Util {
@@ -35,6 +37,15 @@ public final class Util {
             if (argument == null) { throw new IllegalArgumentException("Value in array " + name + " may not be null."); }
         }
         return arguments;
+    }
+
+    public static int calculateTotalSize(final ImmutableList<Location> locationList) {
+        return calculateTotalSizeRecursive(locationList, 0);
+    }
+
+    private static int calculateTotalSizeRecursive(final ImmutableList<Location> locationList, final int currentSize) {
+        if (locationList.isEmpty()) { return currentSize; }
+        return calculateTotalSizeRecursive(locationList.tail, currentSize + locationList.head.size);
     }
 
     public static String tokensToString(final Token[] tokens) {

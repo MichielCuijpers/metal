@@ -16,6 +16,7 @@
 
 package io.parsingdata.metal.data;
 
+import static io.parsingdata.metal.Util.calculateTotalSize;
 import static io.parsingdata.metal.Util.checkNotNull;
 
 import io.parsingdata.metal.encoding.Encoding;
@@ -26,13 +27,14 @@ public class ParseValue extends Value implements ParseItem {
 
     public final String name;
     public final Token definition;
-    public final long offset;
+    public final ImmutableList<Location> location;
 
-    public ParseValue(final String name, final Token definition, final long offset, final byte[] data, final Encoding encoding) {
+    public ParseValue(final String name, final Token definition, final ImmutableList<Location> location, final byte[] data, final Encoding encoding) {
         super(data, encoding);
         this.name = checkNotNull(name, "name");
         this.definition = checkNotNull(definition, "definition");
-        this.offset = offset;
+        this.location = checkNotNull(location, "location");
+        if (data.length != calculateTotalSize(location)) { throw new RuntimeException("Size of data and location do not match."); }
     }
 
     public boolean matches(final String name) {
