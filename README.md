@@ -5,6 +5,8 @@ A Java library for parsing binary data formats, using declarative descriptions.
 [![Build Status](https://travis-ci.org/parsingdata/metal.svg?branch=master)](https://travis-ci.org/parsingdata/metal)
 [![codecov.io](https://codecov.io/github/parsingdata/metal/coverage.svg?branch=master)](https://codecov.io/github/parsingdata/metal?branch=master)
 
+[![BCH compliance](https://bettercodehub.com/edge/badge/MichielCuijpers/metal)](https://bettercodehub.com)
+
 ## License
 
 Copyright 2013-2016 Netherlands Forensic Institute
